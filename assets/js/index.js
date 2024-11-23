@@ -5,6 +5,8 @@ const output = document.querySelector('.output');
 const playButton = document.querySelector('.play');
 const guessTimes = document.querySelector('.guess-times');
 const guessButton = document.querySelector('.guess');
+const answer = document.querySelector('.answer');
+const flipCard = document.querySelector('.flip-card');
 let randomNumber;
 
 function generateRandomNumber() {
@@ -15,7 +17,7 @@ function validateInput(value) {
     const inputNumber = Number(value); 
     if (isNaN(inputNumber) || value.trim() === '' || inputNumber < 0 
     || !Number.isInteger(inputNumber)) {
-        output.value = 'Please enter a positive integer';
+        output.value = 'Please enter a valid number';
         return false;
     }
     return true;
@@ -31,6 +33,7 @@ function initializeGame() {
     output.value = '';
     playButton.innerText = 'Play';
     guessButton.style.cursor = 'pointer';
+    flipCard.style.transform = 'rotateY(0deg)';
 }
 
 function endGame() {
@@ -53,6 +56,8 @@ function checkNumber() {
         output.value = 'My number is bigger';
     } else {
         output.value = 'You are right!';
+        answer.innerText = `${randomNumber}`;
+        flipCard.style.transform = 'rotateY(180deg)';
         endGame(); 
     }
 }
@@ -64,7 +69,7 @@ function startGame() {
 
     let times = 50;
 
-    guessButton.addEventListener('click', function(event) {
+    guessButton.addEventListener('click', function() {
         if (!input.disabled) {
             if(times > 0) {
                 checkNumber(input.value);

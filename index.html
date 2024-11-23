@@ -21,8 +21,13 @@
     <main class="container grid">
        <h2 class="guess-times">Guesses: 50</h2>
        <div class="flex">
-         <input class="input" type="text" disabled>
-         <button class="guess">Guess</button>
+          <div class="flip-card">
+              <input type="text" class=" front input" placeholder="Enter" disabled>
+              <div class="back">
+                <p class="answer"></p>
+              </div>
+          </div>
+          <button class="guess">Guess</button>
        </div>
        <input class="output" type="text" placeholder="Result will be here" disabled>
        <button class="play">Play</button>

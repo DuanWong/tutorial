@@ -24,7 +24,7 @@
 /*--------------------------------------------*/
 
 body {
-    background: #ff00ff;
+    background: #171921;
     font-family: 'Exo 2', sans-serif;
 }
 
@@ -37,23 +37,35 @@ h2 {
     font-size: 30px;
 }
 
-.input {
+.flip-card {
     margin: 20px 0;
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    background-color: #fff;
-    border: 2px solid #fff;
-    font-size: 80px;
-    color:#ff00ff;
-    text-align: center;
-    line-height: 200px;
-    cursor: not-allowed;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 2s;
 }
 
-.input:focus {
-    border: 2px solid #d815d8;
-    transition: ease-in-out 0.25s;
+.front, .back {
+    position: absolute;
+    inset: auto;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    backface-visibility: hidden;
+    background-color: #fff;
+    text-align: center;
+    cursor: not-allowed;
+    font-size: 50px;
+}
+
+.back {
+    transform: rotateY(180deg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: lightblue; 
 }
 
 .guess {
@@ -85,7 +97,6 @@ h2 {
     height:50px;
     background-color: #fff;
     color:#ff00ff;
-    border: 2px solid #ff00ff;
     border-radius: 10px;
     font-size: 30px;
 }
